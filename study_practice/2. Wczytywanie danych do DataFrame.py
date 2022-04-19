@@ -30,3 +30,4 @@ indian_food[['diet', 'ingredients']].to_excel('../data/indian_food_my_excel_list
                                               index=False)                      # nie zapisuje indeksów w pierwszej kolumnie
 
 
+
