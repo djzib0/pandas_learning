@@ -17,13 +17,13 @@ print(indian_food.columns)
 print(indian_food['prep_time'] + indian_food['cook_time'])
 
 # zapisywanie do excela
-# try:
-#     indian_food.to_excel('../data/test.xlsx')
-# except:
-#     print("Ten plik jest używany")
+try:
+    indian_food.to_excel('../data/test.xlsx', index=False, header=False)
+except:
+    print("Ten plik jest używany")
 
 indian_food_excel = pd.read_excel('../data/test.xlsx',
-                                  sheet_name=1,
+                                  sheet_name=0,
                                   header=0)
 print(indian_food_excel)
 
