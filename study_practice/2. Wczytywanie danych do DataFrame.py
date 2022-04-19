@@ -1,32 +1,32 @@
 import pandas as pd
+
 # ustawienia wyświetlania
 pd.set_option('display.max_columns', 50)
-# szerokość DF
 pd.set_option('display.width', 1000)
 pd.set_option('display.max_colwidth', 100)
 
-read_settings = {"name":str, "prep_time":int}
+# wczytywanie danych
+read_settings = {'name':str , 'prep_time': int}
 indian_food = pd.read_csv('../data/indian_food.csv',
-                          dtype=read_settings,
-                          header=0, # which "row" is a header
-                          # index_col=0
-                          )
+                          dtype=read_settings)
+print(indian_food.head(2))
+print(indian_food.dtypes)
 
 print(indian_food.shape)
-print(indian_food.columns)
-print(indian_food['prep_time'] + indian_food['cook_time'])
+indian_food_excel = pd.read_excel('../data/data.xlsx',
+                                  sheet_name=0)
+# lub
 
-# zapisywanie do excela
-try:
-    indian_food.to_excel('../data/test.xlsx', index=False, header=False)
-except:
-    print("Ten plik jest używany")
+xlsx = pd.ExcelFile('../data/data.xlsx')
+df_xlsx = pd.read_excel(xlsx)
+print(df_xlsx)
 
-indian_food_excel = pd.read_excel('../data/test.xlsx',
-                                  sheet_name=0,
-                                  header=0)
-print(indian_food_excel)
+indian_food = pd.read_csv('../data/indian_food.csv',
+                          usecols=['name', 'ingredients', 'diet', 'prep_time',
+                                   'cook_time']) # wczytywanie wybranych kolumn z pliku
 
-
+indian_food[['diet', 'ingredients']].to_excel('../data/indian_food_my_excel_list.xlsx',
+                                              sheet_name='wybrane jedzenie',    # nadaje nazwę arkuszowi
+                                              index=False)                      # nie zapisuje indeksów w pierwszej kolumnie
 
 
