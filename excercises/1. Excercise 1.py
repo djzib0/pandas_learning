@@ -21,7 +21,13 @@ counties_with_max_votes = gov_county[gov_county['percent'] == max_votes]
 """Pkt 2"""
 # sprawdzenie średniej procentowej dla stanu Indiana
 mean_percent_indiana = gov_county[gov_county['state'] == 'Indiana']['percent'].mean().round(2)
-# print(mean_percent_indiana)
+
+# alternatywna wersja
+mean_percent_indiana2 = gov_county[gov_county['state'] == 'Indiana']
+mean_percent_indiana2 = mean_percent_indiana2['percent'].mean().round(2)
+
+print(mean_percent_indiana)
+print(mean_percent_indiana2)
 
 """Pkt 3"""
 
